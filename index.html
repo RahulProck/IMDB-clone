@@ -28,12 +28,12 @@
             </div>
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
     <script>
 
     
-
+  $(document).ready(function() {
 function highlight(word, query) {
     let check = new RegExp(query, "ig")
     return word.toString().replace(check, function(matchedText) {
@@ -132,5 +132,5 @@ $("#show-more").click(function(e) {
         }
     });
 });
-
+});
     </script>
