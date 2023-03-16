@@ -2,14 +2,14 @@
 <div class="container mt-3 text-center">
         <div class="row justify-content-center">
             <div class="col-md-8 col-12 content">
-                <h3>Search Movie</h3>
+                <h3>Search Movies Name</h3>
                 <div id="search">
                     <form>
-                        <input type="text" class="search-input search border-padding" placeholder="Enter name of the movie">
+                        <input type="text" class="search-input search border-padding" placeholder="Enter movie name">
                     </form>
                     <div id="result-list" class="border-padding mb-3">
                         <div id="results"></div>
-                        <div id="result-footer" class="pt-4 mt-2"><a href="#" id="show-more">SHOW MORE »</a></div>
+                        <div id="result-footer" class="pt-4 mt-2"><a href="#" id="show-more">Show More »</a></div>
                     </div>
                 </div>
             </div>
@@ -34,6 +34,7 @@
 
     
   $(document).ready(function() {
+          //Call function on page load
 function highlight(word, query) {
     let check = new RegExp(query, "ig")
     return word.toString().replace(check, function(matchedText) {
@@ -43,7 +44,8 @@ function highlight(word, query) {
 
 $("#result-list").hide()
 $("#list").hide()
-//Search movie name in text
+          
+//Search movie name in search text
 $(".search-input").keyup(function() {
     let search = $(this).val()
     let results = ""
@@ -53,7 +55,8 @@ $(".search-input").keyup(function() {
     } else {
         $(".search-input").removeClass("search").addClass("arrow")
     }
-//API json result for show movie list
+        
+//API result for show movie list as per search movie name
     $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", s: search }, function(data) {
         if (data.Search !== undefined) {
             $.each(data.Search, function(index, value) {
@@ -89,8 +92,8 @@ $(".search-input").keyup(function() {
         }
     });
 });
+          
 //Show more means more data load in list
-
 $("#show-more").click(function(e) {
     e.preventDefault()
     var search = $(".search-input").val()
